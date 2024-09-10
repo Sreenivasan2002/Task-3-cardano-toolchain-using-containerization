@@ -6,7 +6,7 @@
   <a href="(https://github.com/Sreenivasan2002)">
   </a>
 
-  <h1 align="center">Build Toolchain for Cardano using Containerization</h1>
+  <h1 align="center">Toolchain for Cardano using Containerization</h1>
 
 </div>
 

@@ -3,19 +3,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="(https://github.com/Sreenivasan2002)">
+  <a href="https://github.com/Sreenivasan2002">
   </a>
 
   <h1 align="center">Toolchain for Cardano using Containerization</h1>
 
+  <p align="center">
+    <strong>By Sreenivasan S, Reg. No: 21BEC0256</strong>
+  </p>
 </div>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-a Containerfile that can be used as a build toolchain for cardano-node and cardano-cli (including libsodium).
+A Containerfile that can be used as a build toolchain for `cardano-node` and `cardano-cli` (including `libsodium`).
 
-Read the below section to know the details
-
+Read the below sections to know the details.
 
 
 

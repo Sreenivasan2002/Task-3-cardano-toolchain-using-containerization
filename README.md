@@ -16,7 +16,7 @@ a Containerfile that can be used as a build toolchain for cardano-node and carda
 
 Read the below section to know the details
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 <!-- GETTING STARTED -->

@@ -10,13 +10,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag sreenivasan2002/cardano-toolchain:$(date +%s)
-    - name: Login to Docker Hub
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Cache Docker layers
+      uses: actions/cache@v3
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+
+    - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Push to Docker Hub
-      run: docker push sreenivasan2002/cardano-toolchain:$(date +%s)
+
+    - name: Build and Tag Docker image
+      run: |
+        docker build . --file Dockerfile --tag sreenivasan2002/cardano-toolchain:$(date +%s) --tag sreenivasan2002/cardano-toolchain:latest
+
+    - name: Push Docker image to Docker Hub
+      run: |
+        docker push sreenivasan2002/cardano-toolchain:$(date +%s)
+        docker push sreenivasan2002/cardano-toolchain:latest
+
+    - name: Clean up Docker images
+      run: docker rmi sreenivasan2002/cardano-toolchain:$(date +%s) sreenivasan2002/cardano-toolchain:latest || true

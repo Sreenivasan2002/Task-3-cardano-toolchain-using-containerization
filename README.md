@@ -15,16 +15,21 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-A Containerfile that can be used as a build toolchain for `cardano-node` and `cardano-cli` (including `libsodium`).
+This project provides a comprehensive **Containerfile** designed to serve as a build toolchain for setting up and compiling both the `cardano-node` and `cardano-cli` tools, along with their dependency, `libsodium`. These components are essential for running and managing a Cardano node, interacting with the blockchain, and conducting transactions.
 
-Read the below sections to know the details.
+By containerizing the build environment, the project ensures that all necessary dependencies are properly managed and versioned, making it easier for developers to work with a consistent setup across different systems. This approach not only simplifies the development process but also significantly reduces the potential for build and compatibility issues by leveraging containerization technology.
 
+In the following sections, you'll find detailed steps to build the container, ensuring a stable and efficient environment to run the Cardano node and CLI tools.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
-## Steps to build the containerfile
-#### Setting the base image
-```FROM debian:stable-slim AS builder``` : This line sets the base image to Debian's stable-slim version. We give it an alias as 'builder' using the "AS" keyword.
+## Steps to Build the Containerfile
+
+#### Setting the Base Image
+The first step in the container build process is setting the base image. We use the stable version of Debian with the following line:
+```bash
+FROM debian:stable-slim AS builder
 
 
 #### Set environment variables

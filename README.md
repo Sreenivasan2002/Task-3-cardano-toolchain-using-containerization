@@ -224,21 +224,38 @@ Then you can use the cardano-node and cardano-cli commands inside container.
 
 
 ### Continuous Integration
-I added Github Actions to the repository to build the image and push it to Docker Hub whenever a push/PR is made to the main branch. The workflow file is located at .github/workflows/docker-image.yml
+# Cardano Toolchain
 
-### Docker Hub
-The image is available on Docker Hub at ((https://hub.docker.com/r/sreenivasan2002/cardano-toolchain/tags))
+This repository contains the Docker and Kubernetes setup for the Cardano toolchain.
+
+## Continuous Integration
+
+GitHub Actions has been set up to automate the process of building the Docker image and pushing it to Docker Hub on every push or pull request to the `main` branch. The workflow configuration can be found at:
 
 
-### K8s Deployment config files
-I have also added the k8s deployment and service YAML files in the ```k8s-deployment-and-service-configs``` branch. Make sure to check it out!
+## Docker Hub
 
+The Docker image is available on Docker Hub:
 
-### Difficulties I faced
- - 1st difficulty was to choose the right dependencies. Then after checking the GHCup, Haskell, libsodium and Cabal documentation, I was able to figure out the dependencies.
- - 2nd was to get the right version of cabal, GHC and libsodium. I had to try different versions of cabal, GHC and libsodium to get the right combination of versions that worked.
- - 3rd was to get the stable version of cardano-node. here I got stuck for a few hours. Then I had to check the github thouroughly and then I found the tags section where I browsed and tried the stable versions of cardano-node by using some of them one-by-one. Finally the stable verison 1.26.0 worked.
- - 4th was to decrease the size of the final image. I had to use multi stage build to reduce the size of the final image to overcome that. Otherwise the final image would have been around 9GB. But now it is around 600MB.
+[Cardano Toolchain Image](https://hub.docker.com/r/sreenivasan2002/cardano-toolchain/tags)
+
+## Kubernetes Deployment Configuration Files
+
+Kubernetes deployment and service configuration files are available in the `k8s-deployment-and-service-configs` branch. Please check them out!
+
+## Challenges Faced
+
+1. **Choosing the Correct Dependencies:**  
+   The first challenge was selecting the appropriate dependencies. After reviewing the GHCup, Haskell, libsodium, and Cabal documentation, I was able to identify the correct ones.
+
+2. **Version Compatibility:**  
+   Finding compatible versions of Cabal, GHC, and libsodium required multiple attempts. After trying different combinations, I found a set that worked together.
+
+3. **Finding a Stable Version of Cardano-Node:**  
+   I struggled to find a stable version of `cardano-node`. After exploring the GitHub repository's tags section, I found and tested various versions until I settled on version 1.26.0, which worked reliably.
+
+4. **Reducing Docker Image Size:**  
+   Initially, the Docker image was around 9GB. By implementing a multi-stage build, I managed to reduce the image size to approximately 600MB, optimizing storage and performance.
 
 <!-- CONTACT -->
 ## Contact
